@@ -28,6 +28,12 @@ public class Actor {
         this.lastName = lastName;
     }
 
+    public Actor() {
+
+    }
+
+
+
     //Methods
 
     public void setActorID(int actorID) {
