@@ -14,6 +14,8 @@ import javax.persistence.*;
 public class Actor {
 
 
+
+
     //Attributes
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -27,6 +29,18 @@ public class Actor {
     }
 
     //Methods
+
+    public void setActorID(int actorID) {
+        this.actorID = actorID;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
     public int getActorID() {
         return actorID;
     }
