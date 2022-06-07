@@ -19,7 +19,7 @@ public class MyFirstMicroserviceApplication {
 	}
 
 
-	public void sakilaMicroserviceApplication(ActorRepository actorRepository){
+	public void myFirstMicroserviceApplication(ActorRepository actorRepository){
 		this.actorRepository = actorRepository;
 	}
 
@@ -34,5 +34,8 @@ public class MyFirstMicroserviceApplication {
 	void deleteById(@RequestParam(name = "id") int id){
 		actorRepository.deleteById(id);
 	}
+
+
+
 
 }
