@@ -1,4 +1,6 @@
 package com.tsi.abbas.gure.program.StorePackage;
 
-public interface StoreRepository {
+import org.springframework.data.repository.CrudRepository;
+
+public interface StoreRepository extends CrudRepository<Store,Integer> {
 }
