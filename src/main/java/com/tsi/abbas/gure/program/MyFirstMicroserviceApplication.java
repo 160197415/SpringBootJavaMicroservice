@@ -1,5 +1,7 @@
 package com.tsi.abbas.gure.program;
 
+import com.tsi.abbas.gure.program.ActorPackage.Actor;
+import com.tsi.abbas.gure.program.ActorPackage.ActorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

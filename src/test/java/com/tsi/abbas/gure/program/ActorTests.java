@@ -1,5 +1,6 @@
 package com.tsi.abbas.gure.program;
 
+import com.tsi.abbas.gure.program.ActorPackage.Actor;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;

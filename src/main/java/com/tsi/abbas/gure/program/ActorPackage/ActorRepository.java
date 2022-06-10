@@ -1,4 +1,4 @@
-package com.tsi.abbas.gure.program;
+package com.tsi.abbas.gure.program.ActorPackage;
 
 import org.springframework.data.repository.CrudRepository;
 
