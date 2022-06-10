@@ -88,19 +88,19 @@ public class MockitoTest {
 
 
 
-    @Test
-    public void quickTest(){
-
-            Actor mockActor = new Actor("Tyrone", "WIlliamson");
-            mockActor.setActor_id(0);
-            actorRepository.save(mockActor);
-
-        System.out.println("Wanna see what actor repository has");
-        System.out.println(actorRepository.findAll());
-
-            Assertions.assertEquals(0,actorRepository.existsById(mockActor.actor_id),"A list of all actors");
-
-        }
+//    @Test
+//    public void quickTest(){
+//
+//            Actor mockActor = new Actor("Tyrone", "WIlliamson");
+//            mockActor.setActor_id(0);
+//            actorRepository.save(mockActor);
+//
+//        System.out.println("Wanna see what actor repository has");
+//        System.out.println(actorRepository.findAll());
+//
+//            Assertions.assertEquals(mockActor.getActor_id(),actorRepository.findById(mockActor.getActor_id()),"A list of all actors");
+//
+//        }
 
     @Test
     public void searchByNameActor(){
