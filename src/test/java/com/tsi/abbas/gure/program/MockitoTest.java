@@ -10,15 +10,16 @@ import org.mockito.ArgumentCaptor;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
+import org.springframework.boot.test.mock.mockito.MockBean;
+
 
 import java.util.List;
 
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
 public class MockitoTest {
-    @Mock
+    @MockBean
     private ActorRepository actorRepository;
     @InjectMocks
     private MyFirstMicroserviceApplication myFirstMicroserviceApp;
@@ -48,9 +49,9 @@ public class MockitoTest {
         String actualFirstName = argumentCaptorActor.getAllValues().get(0).getFirstName();
         String actualLastName = argumentCaptorActor.getAllValues().get(0).getLastName();
 
-        Assertions.assertEquals(0, actualID, "ID doesn't match brudda");
-        Assertions.assertEquals("Tyrone", actualFirstName, "first name doesn't match homie");
-        Assertions.assertEquals("WIlliamson", actualLastName, "last name doesn't match brudda");
+        Assertions.assertEquals(mockActor.actor_id, argumentCaptorActor.getValue().getActor_id(), "ID doesn't match brudda");
+        Assertions.assertEquals(mockActor.firstName, argumentCaptorActor.getValue().getFirstName(), "first name doesn't match homie");
+        Assertions.assertEquals(mockActor.lastName, argumentCaptorActor.getValue().getLastName(), "last name doesn't match brudda");
     }
 
     @Test
@@ -89,13 +90,38 @@ public class MockitoTest {
 
     @Test
     public void quickTest(){
-            myFirstMicroserviceApp.newActor("Abbas","Moh");
-            System.out.println(myFirstMicroserviceApp.getAllActors().toString());
-            Assertions.assertEquals(1,1,"A list of all actors");
 
+            Actor mockActor = new Actor("Tyrone", "WIlliamson");
+            mockActor.setActor_id(0);
+            actorRepository.save(mockActor);
 
+        System.out.println("Wanna see what actor repository has");
+        System.out.println(actorRepository.findAll());
+
+            Assertions.assertEquals(0,actorRepository.existsById(mockActor.actor_id),"A list of all actors");
 
         }
+
+    @Test
+    public void searchByNameActor(){
+
+        //Create Dummy actor to test
+        Actor dummyActor = new Actor("John" , "Doe") ;
+
+        //Get myMicroserviceApp to get the first and last name values of my dummy actor
+        myFirstMicroserviceApp.newActor(dummyActor.getFirstName(),dummyActor.getLastName());
+
+        //Create an actor argument captor to capture an instance an actor class, in this case my dummy actor
+        ArgumentCaptor<Actor> actorArgumentCaptor = ArgumentCaptor.forClass(Actor.class);
+
+        //I verify the repository has added the actorargumentcaptor in this instance
+        verify(actorRepository).save(actorArgumentCaptor.capture());
+
+        //Now we test if the argument captor actor has the value inputted into the repository
+        Assertions.assertEquals(1,actorArgumentCaptor.getAllValues().size(), "The argument captor is empty");
+
+
+    }
 
 
 }
