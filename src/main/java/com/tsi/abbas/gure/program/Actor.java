@@ -19,7 +19,7 @@ public class Actor {
     //Attributes
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    int actorID;
+    int actor_id;
     String firstName;
     String lastName;
     //Constructors
@@ -36,8 +36,8 @@ public class Actor {
 
     //Methods
 
-    public void setActorID(int actorID) {
-        this.actorID = actorID;
+    public void setActor_id(int actor_id) {
+        this.actor_id = actor_id;
     }
 
     public void setFirstName(String firstName) {
@@ -47,8 +47,8 @@ public class Actor {
     public void setLastName(String lastName) {
         this.lastName = lastName;
     }
-    public int getActorID() {
-        return actorID;
+    public int getActor_id() {
+        return actor_id;
     }
 
     public String getFirstName() {
