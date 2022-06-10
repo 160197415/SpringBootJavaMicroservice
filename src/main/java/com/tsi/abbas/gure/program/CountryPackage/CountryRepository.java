@@ -1,4 +1,6 @@
 package com.tsi.abbas.gure.program.CountryPackage;
 
-public interface CountryRepository {
+import org.springframework.data.repository.CrudRepository;
+
+public interface CountryRepository extends CrudRepository <Country,Integer>{
 }

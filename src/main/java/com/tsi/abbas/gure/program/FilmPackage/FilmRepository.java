@@ -1,4 +1,6 @@
 package com.tsi.abbas.gure.program.FilmPackage;
 
-public class FilmRepository {
+import org.springframework.data.repository.CrudRepository;
+
+public interface FilmRepository extends CrudRepository<Film,Integer> {
 }
