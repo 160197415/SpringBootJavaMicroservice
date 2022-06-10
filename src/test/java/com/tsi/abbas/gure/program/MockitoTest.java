@@ -72,17 +72,17 @@ public class MockitoTest {
         Assertions.assertEquals(1, argumentCaptorActor.getAllValues().size(), "Actor has not been added");
 
         myFirstMicroserviceApp.deleteById(mockActor.actor_id);
-        System.out.println("Checking if actor id got value");
+        System.out.println("\nChecking if actor id got value");
         System.out.println(argumentCaptorActor.getAllValues().get(0).getActor_id());
 
         List<Actor> list = argumentCaptorActor.getAllValues();
-        System.out.println("getting allvalue of list");
+        System.out.println("\ngetting allvalue of list");
         System.out.println(list);
         actorRepository.deleteAll();
 
 
         Assertions.assertEquals(expected, Actual, "The repo size is not empty, actor has not been removed");
-        System.out.println("empty space so i can discern");
+        System.out.println("\nempty space so i can discern");
         System.out.println(list.get(0).getActor_id());
     }
 

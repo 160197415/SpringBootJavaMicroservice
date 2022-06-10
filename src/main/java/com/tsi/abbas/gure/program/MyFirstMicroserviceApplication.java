@@ -59,10 +59,13 @@ public class MyFirstMicroserviceApplication {
 	{
 
 		String valueWasUpdated = "Values were updated";
+
+		Actor actor = new Actor();
 		//using crud respository method that we got from extended class, check if id of actor in the database exists
 		if(actorRepository.existsById(actorId)){
 			// if it does find the specific ID in the database using the ID of the actor and put it in temp actor value
-			Actor actor = actorRepository.findById(actorId).get();
+
+			actor = actorRepository.findById(actorId).get();
 
 			actor.setFirstName(firstName);
 			actor.setLastName(lastName);
@@ -83,8 +86,10 @@ public class MyFirstMicroserviceApplication {
 	public  @ResponseBody Actor newActor(  @RequestParam String firstName,@RequestParam String lastName)
 	{
 		Actor newActor = new Actor();
-		/** I didnt add id to be updated because the ID is autoincrementally added,
+
+		/** I didnt add id variable to be created/updated because it is autoincrementally added by the database,
 		 * if I do add id it would not create/update with the save method */
+
 		newActor.setFirstName(firstName);
 		newActor.setLastName(lastName);
 		return actorRepository.save(newActor);
