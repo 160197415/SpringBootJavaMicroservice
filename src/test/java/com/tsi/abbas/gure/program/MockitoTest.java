@@ -25,41 +25,67 @@ public class MockitoTest {
     private MyFirstMicroserviceApplication myFirstMicroserviceApp;
 
 
+    /**
+     * Setting up the Mock repository I will be testing on
+     * if my tests work on the mock it will work on the actual database
+     */
     @BeforeEach
     void setUp() {
         actorRepository = mock(ActorRepository.class);
         myFirstMicroserviceApp = new MyFirstMicroserviceApplication(actorRepository);
     }
 
+    /**
+     * Following test to get all the actor entries in the table
+     */
     @Test
     public void getAllActorEntries() {
+        //call the microservice instance and use method to get all actors
         myFirstMicroserviceApp.getAllActors();
+
+        //Verify method from @Mock, using it to verify our Mock repository can find all actors
         verify(actorRepository).findAll();
     }
 
+    /**
+     * A test in which we add actor to the table.
+     */
     @Test
     public void addAllActors() {
-
+        //Create mock Actor instance class with firstname and last name
+        //#Remember we do not need to input ID as that is autoincremented
+        //#Also keep in mind at this point the  mock repository is empty
         Actor mockActor = new Actor("Tyrone", "WIlliamson");
+
+        //Add new actor into my microservice mock repo, but I will input the values of the mock actor
         myFirstMicroserviceApp.newActor(mockActor.getFirstName(), mockActor.getLastName());
+
+        //Argument captor actor will capture the instance of the creation of my new mock actor in putting into the class
+        //#Might do some research on argument captor and change comment later
         ArgumentCaptor<Actor> argumentCaptorActor = ArgumentCaptor.forClass(Actor.class);
         verify(actorRepository).save(argumentCaptorActor.capture());
 
-        int actualID = argumentCaptorActor.getAllValues().get(0).getActor_id();
+        //Setting up my actual values for the assertwquals test class to compare to the mock actor
+        int actualID = argumentCaptorActor.getAllValues().get(0).getActorID();
         String actualFirstName = argumentCaptorActor.getAllValues().get(0).getFirstName();
         String actualLastName = argumentCaptorActor.getAllValues().get(0).getLastName();
 
-        Assertions.assertEquals(mockActor.actor_id, argumentCaptorActor.getValue().getActor_id(), "ID doesn't match brudda");
+        //Test that the mock actor values are similar to the argument capture actor who captured the instance values of my new mock actor
+        //Basically check if the values are the same.
+        Assertions.assertEquals(mockActor.actorId, argumentCaptorActor.getValue().getActorID(), "ID doesn't match brudda");
         Assertions.assertEquals(mockActor.firstName, argumentCaptorActor.getValue().getFirstName(), "first name doesn't match homie");
         Assertions.assertEquals(mockActor.lastName, argumentCaptorActor.getValue().getLastName(), "last name doesn't match brudda");
     }
 
+    /**
+     * A test in which I will delete actor
+     */
     @Test
     public void deleteActor() {
 
         //Creating Mock Actor with Mock data
         Actor mockActor = new Actor("Tyrone", "WIlliamson");
-        mockActor.setActor_id(0);
+        mockActor.setActorID(0);
         myFirstMicroserviceApp.newActor(mockActor.getFirstName(), mockActor.getLastName());
 
         String Actual = myFirstMicroserviceApp.deleteById(0);
@@ -71,9 +97,9 @@ public class MockitoTest {
         //Checking if actor has been added into mock repo by checking the mock repos size
         Assertions.assertEquals(1, argumentCaptorActor.getAllValues().size(), "Actor has not been added");
 
-        myFirstMicroserviceApp.deleteById(mockActor.actor_id);
+        myFirstMicroserviceApp.deleteById(mockActor.actorId);
         System.out.println("\nChecking if actor id got value");
-        System.out.println(argumentCaptorActor.getAllValues().get(0).getActor_id());
+        System.out.println(argumentCaptorActor.getAllValues().get(0).getActorID());
 
         List<Actor> list = argumentCaptorActor.getAllValues();
         System.out.println("\ngetting allvalue of list");
@@ -83,25 +109,12 @@ public class MockitoTest {
 
         Assertions.assertEquals(expected, Actual, "The repo size is not empty, actor has not been removed");
         System.out.println("\nempty space so i can discern");
-        System.out.println(list.get(0).getActor_id());
+        System.out.println(list.get(0).getActorID());
     }
 
-
-
-//    @Test
-//    public void quickTest(){
-//
-//            Actor mockActor = new Actor("Tyrone", "WIlliamson");
-//            mockActor.setActor_id(0);
-//            actorRepository.save(mockActor);
-//
-//        System.out.println("Wanna see what actor repository has");
-//        System.out.println(actorRepository.findAll());
-//
-//            Assertions.assertEquals(mockActor.getActor_id(),actorRepository.findById(mockActor.getActor_id()),"A list of all actors");
-//
-//        }
-
+    /**
+     * Tests for when I want to search for an actor
+     */
     @Test
     public void searchByNameActor(){
 
@@ -123,7 +136,19 @@ public class MockitoTest {
 
     }
 
-
+//    @Test
+//    public void quickTest(){
+//
+//            Actor mockActor = new Actor("Tyrone", "WIlliamson");
+//            mockActor.setActor_id(0);
+//            actorRepository.save(mockActor);
+//
+//        System.out.println("Wanna see what actor repository has");
+//        System.out.println(actorRepository.findAll());
+//
+//            Assertions.assertEquals(mockActor.getActor_id(),actorRepository.findById(mockActor.getActor_id()),"A list of all actors");
+//
+//        }
 }
 
 
