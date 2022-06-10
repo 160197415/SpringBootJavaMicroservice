@@ -60,10 +60,11 @@ public class MyFirstMicroserviceApplication {
 
 		String valueWasUpdated = "Values were updated";
 
-		Actor actor = new Actor();
+
 		//using crud respository method that we got from extended class, check if id of actor in the database exists
-		if(actorRepository.existsById(actorId)){
+		if(actorRepository.existsById(actorId) && actorRepository.findById(actorId).isPresent()){
 			// if it does find the specific ID in the database using the ID of the actor and put it in temp actor value
+			Actor actor = new Actor();
 
 			actor = actorRepository.findById(actorId).get();
 
