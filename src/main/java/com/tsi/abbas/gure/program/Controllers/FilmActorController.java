@@ -7,6 +7,7 @@ import com.tsi.abbas.gure.program.StorePackage.Store;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+@RestController
 public class FilmActorController {
 
 

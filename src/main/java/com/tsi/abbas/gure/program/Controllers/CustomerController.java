@@ -6,6 +6,7 @@ import com.tsi.abbas.gure.program.CustomerPackage.CustomerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+@RestController
 public class CustomerController {
 
     //Customer repository instantiated

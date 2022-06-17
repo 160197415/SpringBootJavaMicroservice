@@ -12,10 +12,15 @@ public class CompleteRepository {
 
     @Autowired
     private ActorRepository actorRepository;
+    @Autowired
     private CustomerRepository customerRepository;
+    @Autowired
     private FilmRepository filmRepository;
+    @Autowired
     private FilmActorRepository filmActorRepository;
+    @Autowired
     private CountryRepository countryRepository;
+    @Autowired
     private StoreRepository storeRepository;
 
 

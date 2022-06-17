@@ -3,7 +3,6 @@ package com.tsi.abbas.gure.program;
 
 import com.tsi.abbas.gure.program.ActorPackage.Actor;
 import com.tsi.abbas.gure.program.ActorPackage.ActorRepository;
-import com.tsi.abbas.gure.program.CustomerPackage.CustomerRepository;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -21,10 +20,7 @@ import static org.mockito.Mockito.*;
 @ExtendWith(MockitoExtension.class)
 public class MockitoTest {
     @MockBean
-    private ActorRepository actorRepository;
-
-    @MockBean
-    private CustomerRepository customerRepository;
+    private CompleteRepository completeRepository;
     @InjectMocks
     private MyFirstMicroserviceApplication myFirstMicroserviceApp;
 
@@ -35,9 +31,8 @@ public class MockitoTest {
      */
     @BeforeEach
     void setUp() {
-        actorRepository = mock(ActorRepository.class);
-        customerRepository = mock(CustomerRepository.class);
-        myFirstMicroserviceApp = new MyFirstMicroserviceApplication(actorRepository,customerRepository);
+        completeRepository = mock(CompleteRepository.class);
+        myFirstMicroserviceApp = new MyFirstMicroserviceApplication(completeRepository);
     }
 
     /**
