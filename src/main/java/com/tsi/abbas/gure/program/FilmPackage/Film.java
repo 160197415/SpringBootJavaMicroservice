@@ -16,12 +16,26 @@ public class Film {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int filmID;
     private String filmTitle;
-    private int languageID;
+
     private int storedRentedFromID;
     private int filmLength;
     private int filmRating;
     private int filmActorID;
     private String actorName;
+
+    public Film(int filmID, String filmTitle, int storedRentedFromID, int filmLength, int filmRating, int filmActorID, String actorName) {
+        this.filmID = filmID;
+        this.filmTitle = filmTitle;
+        this.storedRentedFromID = storedRentedFromID;
+        this.filmLength = filmLength;
+        this.filmRating = filmRating;
+        this.filmActorID = filmActorID;
+        this.actorName = actorName;
+    }
+
+    public Film(){
+
+    }
 
     /**
      * Generating Setters and getters
@@ -42,14 +56,6 @@ public class Film {
 
     public void setFilmTitle(String filmTitle) {
         this.filmTitle = filmTitle;
-    }
-
-    public int getLanguageID() {
-        return languageID;
-    }
-
-    public void setLanguageID(int languageID) {
-        this.languageID = languageID;
     }
 
     public int getStoredRentedFromID() {

@@ -7,15 +7,25 @@ import javax.persistence.*;
 @Table(name = "film_actor")
 public class FilmActor {
 
+    public FilmActor(int filmActorID, int filmID) {
+        this.filmActorID = filmActorID;
+        this.filmID = filmID;
+    }
+
     /**
      * Creating properties of the film_actor Class
      */
+
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 
     private int filmActorID;
     private int filmID;
+
+    public FilmActor(){
+
+    }
 
     /**
      * Generating setters and getters

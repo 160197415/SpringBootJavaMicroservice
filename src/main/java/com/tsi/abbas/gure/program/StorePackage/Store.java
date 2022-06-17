@@ -14,6 +14,14 @@ public class Store {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int storeID;
 
+    public Store(int storeID, int storeAddressID, int staffSize) {
+        this.storeID = storeID;
+        this.storeAddressID = storeAddressID;
+        this.staffSize = staffSize;
+    }
+public Store(){
+
+}
     private int storeAddressID;
 
     private int staffSize;

@@ -2,6 +2,7 @@ package com.tsi.abbas.gure.program;
 
 import com.tsi.abbas.gure.program.ActorPackage.Actor;
 import com.tsi.abbas.gure.program.ActorPackage.ActorRepository;
+import com.tsi.abbas.gure.program.CustomerPackage.CustomerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -17,18 +18,24 @@ public class MyFirstMicroserviceApplication {
 	@Autowired
 	private ActorRepository actorRepository;
 
+	@Autowired
+	private CustomerRepository customerRepository;
+
 
 
 
 	//Constructor for my microserviceApplication
-	public MyFirstMicroserviceApplication(ActorRepository actorRepository) {
+	public MyFirstMicroserviceApplication(ActorRepository actorRepository, CustomerRepository customerRepository) {
+
 		this.actorRepository = actorRepository;
+		this.customerRepository = customerRepository;
 	}
 
 
 	//Main method to run the springapplication, with spring boot backend functions and dependencies set up etc
 	//functions that we will use throughout for our microservice application.
 	public static void main(String[] args) {
+
 		SpringApplication.run(MyFirstMicroserviceApplication.class, args);
 	}
 
@@ -116,5 +123,5 @@ public class MyFirstMicroserviceApplication {
 		return actorRepository.save(newActor);
 	}
 
-
+//	@GetMapping("/Customers")
 }
