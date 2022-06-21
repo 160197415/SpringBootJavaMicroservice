@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-public class CustomerController {
+public class customerController {
 
     //Customer repository instantiated
     @Autowired
@@ -25,50 +25,51 @@ public class CustomerController {
 
     /**
      *
-     * @param customerID is the ID of customers and is used as parameter for searching for customer's existence in table
+     * @param customer_id is the ID of customers and is used as parameter for searching for customer's existence in table
      * @return true if the customer exists else return false, a simple boolean class for existence of customer's ID
      */
-    @GetMapping("/Customers/IdExist")
-    public @ResponseBody Boolean idExists(@RequestParam int customerID){
-        if (customerRepository.existsById(customerID)){
-            return true ;
-        }else return false ;
+    @GetMapping("/Customer/IdExist")
+    public @ResponseBody Boolean idExists(@RequestParam int customer_id){
+
+        return customerRepository.existsById(customer_id);
+
+
     }
 
 
     /**Out of the CRUD functions this is the 'Delete' */
-    @DeleteMapping("/Delete_By_ID")
+    @DeleteMapping("/Delete_By_Customer_ID")
     public @ResponseBody
-    String deleteById(@RequestParam int filmActorID){
+    String deleteById(@RequestParam int customer_id){
 
-        customerRepository.deleteById(filmActorID);
+        customerRepository.deleteById(customer_id);
         return "Successfully deleted";
     }
 
 
     /**Out of the CRUD functions this is the 'Update' Method */
-    @PutMapping("/Replace_By_ID")
-    public @ResponseBody String updateCustomerDetails(@RequestParam int customerID ,@RequestParam int storeID, @RequestParam String customerFirstName,
-         @RequestParam String customerLastName,@RequestParam String customerEmail,@RequestParam String customerAddress)
+    @PutMapping("/Replace_By_Customer_ID")
+    public @ResponseBody String updateCustomerDetails(@RequestParam int customer_id ,@RequestParam int store_id, @RequestParam String first_name,
+         @RequestParam String last_name,@RequestParam String email)
     {
         //A string we will use later as a message that values were successfully updated, you'll see it below
         String valueWasUpdated = "Values were updated";
 
 
         //using crud repository method that we got from extended class, check if id of customer exists in the database
-        if(customerRepository.existsById(customerID)){
+        if(customerRepository.existsById(customer_id)){
             // if it does find the specific ID in the database using the ID of the customer and put it in a temp store value
             Customer customer = new Customer();
 
             //get customer by ID
-            customer = customerRepository.findById(customerID).get();
+            customer = customerRepository.findById(customer_id).get();
 
             //Once finding customer, user updates relevant values for the film actor's variables
-            customer.setStoreID(storeID);
-            customer.setCustomerFirstName(customerFirstName);
-            customer.setCustomerLastName(customerLastName);
-            customer.setCustomerEmail(customerEmail);
-            customer.setCustomerAddress(customerAddress);
+            customer.setStore_id(store_id);
+            customer.setFirst_name(first_name);
+            customer.setLast_name(last_name);
+            customer.setEmail(email);
+
 
             //Repository save/updates the store detail changes.
             customerRepository.save(customer);
@@ -84,9 +85,9 @@ public class CustomerController {
     }
 
     /**Out of the CRUD functions this is the 'Create' */
-    @PostMapping("/Create_By_ID")
-    public  @ResponseBody Customer newCustomer(@RequestParam int storeID, @RequestParam String customerFirstName,
-          @RequestParam String customerLastName,@RequestParam String customerEmail,@RequestParam String customerAddress)
+    @PostMapping("/Create_By_Customer_ID")
+    public  @ResponseBody Customer newCustomer(@RequestParam int customer_id ,@RequestParam int store_id, @RequestParam String first_name,
+                                               @RequestParam String last_name,@RequestParam String email)
     {
         // instance that we will use for our new customer
         Customer customer = new Customer();
@@ -97,11 +98,10 @@ public class CustomerController {
 
         //Setting Stores values
         //Then returning the value to user along with the ID they were assigned by the table
-        customer.setStoreID(storeID);
-        customer.setCustomerFirstName(customerFirstName);
-        customer.setCustomerLastName(customerLastName);
-        customer.setCustomerEmail(customerEmail);
-        customer.setCustomerAddress(customerAddress);
+        customer.setStore_id(store_id);
+        customer.setFirst_name(first_name);
+        customer.setLast_name(last_name);
+        customer.setEmail(email);
         return customerRepository.save(customer);
     }
 

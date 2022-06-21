@@ -1,6 +1,8 @@
 package com.tsi.abbas.gure.program.CustomerPackage;
 
 
+import org.springframework.data.annotation.Id;
+
 import javax.persistence.*;
 
 @Entity
@@ -15,76 +17,81 @@ public class Customer {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int customerID;
-    private int storeID;
+    private int customer_id;
 
-    private String customerFirstName;
-    private String customerLastName;
+    @Column(name = "store_id")
+    private int store_id;
 
-    public Customer(int customerID, int storeID, String customerFirstName, String customerLastName, String customerEmail, String customerAddress) {
-        this.customerID = customerID;
-        this.storeID = storeID;
-        this.customerFirstName = customerFirstName;
-        this.customerLastName = customerLastName;
-        this.customerEmail = customerEmail;
-        this.customerAddress = customerAddress;
+
+    private String first_name;
+
+
+    private String last_name;
+
+    private String email;
+
+    private int address_id;
+
+
+    public Customer(int customer_id, int store_id, String first_name, String last_name, String email, int address_id) {
+        this.customer_id = customer_id;
+        this.store_id = store_id;
+        this.first_name = first_name;
+        this.last_name = last_name;
+        this.email = email;
+        this.address_id = address_id;
     }
+
+
+
+
     public Customer(){
 
     }
-    private String customerEmail;
-    private String customerAddress;
 
     /**
      * Generating Setters and Getters
      */
 
-    public int getCustomerID() {
-        return customerID;
+    public int getCustomer_id() {
+        return customer_id;
     }
 
-    public void setCustomerID(int customerID) {
-        this.customerID = customerID;
+    public void setCustomer_id(int customer_id) {
+        this.customer_id = customer_id;
     }
 
-    public int getStoreID() {
-        return storeID;
+    public int getStore_id() {
+        return store_id;
     }
 
-    public void setStoreID(int storeID) {
-        this.storeID = storeID;
+    public void setStore_id(int store_id) {
+        this.store_id = store_id;
     }
 
-    public String getCustomerFirstName() {
-        return customerFirstName;
+    public String getFirst_name() {
+        return first_name;
     }
 
-    public void setCustomerFirstName(String customerFirstName) {
-        this.customerFirstName = customerFirstName;
+    public void setFirst_name(String first_name) {
+        this.first_name = first_name;
     }
 
-    public String getCustomerLastName() {
-        return customerLastName;
+    public String getLast_name() {
+        return last_name;
     }
 
-    public void setCustomerLastName(String customerLastName) {
-        this.customerLastName = customerLastName;
+    public void setLast_name(String last_name) {
+        this.last_name = last_name;
     }
 
-    public String getCustomerEmail() {
-        return customerEmail;
+    public String getEmail() {
+        return email;
     }
 
-    public void setCustomerEmail(String customerEmail) {
-        this.customerEmail = customerEmail;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
-    public String getCustomerAddress() {
-        return customerAddress;
-    }
-
-    public void setCustomerAddress(String customerAddress) {
-        this.customerAddress = customerAddress;
-    }
 
 }

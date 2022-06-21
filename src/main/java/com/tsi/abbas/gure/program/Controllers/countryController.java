@@ -5,7 +5,7 @@ import com.tsi.abbas.gure.program.CountryPackage.CountryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 ;import org.springframework.web.bind.annotation.*;
 @RestController
-public class CountryController {
+public class countryController {
 
     //Country repository instantiated
     @Autowired
@@ -25,7 +25,7 @@ public class CountryController {
      * @param countryID is the ID of the film that is used as parameter for searching for Country's existence in table
      * @return true if the film exists else return false, a simple boolean class for existence of country's ID
      */
-    @GetMapping("/Countries/IdExist")
+    @GetMapping("/Country/IdExist")
     public @ResponseBody Boolean idExists(@RequestParam int countryID){
         if (countryRepository.existsById(countryID)){
             return true ;
@@ -34,9 +34,9 @@ public class CountryController {
 
 
     /**Out of the CRUD functions this is the 'Delete' */
-    @DeleteMapping("/Delete_By_ID")
+    @DeleteMapping("/Delete_By_Country_ID")
     public @ResponseBody
-    String deleteById(@RequestParam int countryID){
+    String deleteByCountryId(@RequestParam int countryID){
 
         countryRepository.deleteById(countryID);
         return "Successfully deleted";
@@ -44,7 +44,7 @@ public class CountryController {
 
 
     /**Out of the CRUD functions this is the 'Update' Method */
-    @PutMapping("/Replace_By_ID")
+    @PutMapping("/Replace_Country_By_ID")
     public @ResponseBody String updateCountry(@RequestParam int countryID ,@RequestParam String countryName)
     {
         //A string we will use later as a message that values were successfully updated, you'll see it below
@@ -60,7 +60,7 @@ public class CountryController {
             replaceCountry = countryRepository.findById(countryID).get();
 
             //Once finding Country user inputs relevant values to country variables
-            replaceCountry.setCountryName(countryName);
+            replaceCountry.setCountry(countryName);
 
 
             //Repository save/updates the country detail changes.
@@ -77,7 +77,7 @@ public class CountryController {
     }
 
     /**Out of the CRUD functions this is the 'Create' */
-    @PostMapping("/Create_By_ID")
+    @PostMapping("/Create_Country_By_ID")
     public  @ResponseBody Country newCountry(@RequestParam String countryName)
     {
         //Country instance that we will use for our new country
@@ -89,7 +89,7 @@ public class CountryController {
 
         //Setting the new country fields
         //Then returning the value to user along with the ID they were assigned by the table
-        country.setCountryName(countryName);
+        country.setCountry(countryName);
         return countryRepository.save(country);
     }
 }

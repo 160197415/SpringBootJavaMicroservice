@@ -24,20 +24,21 @@ public class Actor {
     //Attributes
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    public int actorId;
-    public String firstName;
-    public String lastName;
+    public int actor_id;
+
+    public String first_name;
+    public String last_name;
 
 
     /**
      * This is the basic constructor of the actor details that we will edit, we don't add the ID
      * due to ID being auto-incremental in the database when we add a new actor.
-     * @param firstName is firstname variable of the actor
-     * @param lastName is the lastname variable for our actor class
+     * @param first_name is firstname variable of the actor
+     * @param last_name is the lastname variable for our actor class
      */
-    public Actor(String firstName, String lastName){
-        this.firstName = firstName;
-        this.lastName = lastName;
+    public Actor(String first_name, String last_name){
+        this.first_name = first_name;
+        this.last_name = last_name;
     }
 
 
@@ -54,27 +55,27 @@ public class Actor {
      */
 
     public void setActorID(int actorId) {
-        this.actorId = actorId;
+        this.actor_id = actorId;
     }
 
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
+    public void setFirst_name(String first_name) {
+        this.first_name = first_name;
     }
 
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
+    public void setLast_name(String last_name) {
+        this.last_name = last_name;
     }
 
     public int getActorID() {
-        return actorId;
+        return actor_id;
     }
 
-    public String getFirstName() {
-        return firstName;
+    public String getFirst_name() {
+        return first_name;
     }
 
-    public String getLastName() {
-        return lastName;
+    public String getLast_name() {
+        return last_name;
     }
 
 }

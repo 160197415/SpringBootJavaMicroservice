@@ -1,9 +1,7 @@
 package com.tsi.abbas.gure.program;
 
-import com.tsi.abbas.gure.program.ActorPackage.Actor;
+
 import com.tsi.abbas.gure.program.ActorPackage.ActorRepository;
-import com.tsi.abbas.gure.program.Controllers.*;
-import com.tsi.abbas.gure.program.CustomerPackage.CustomerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -15,25 +13,24 @@ import org.springframework.web.bind.annotation.*;
 public class MyFirstMicroserviceApplication {
 
 
-	//Actor repository instantiated
-	@Autowired
-	private CompleteRepository completeRepository;
 
 
 
 
 	//Constructor for my microserviceApplication
-	public MyFirstMicroserviceApplication(CompleteRepository completeRepository) {
+	public MyFirstMicroserviceApplication() {
 
-		this.completeRepository = completeRepository;
 	}
 
 
-	//Main method to run the springapplication, with spring boot backend functions and dependencies set up etc
-	//functions that we will use throughout for our microservice application.
+	//Main method to run the spring application, with spring boot backend functions and dependencies set up etc.
+	//functions that we will use throughout for our microservice application.![](../../../../../../../../../../../../AppData/Local/Temp/download.jpg)
 	public static void main(String[] args) {
 
 		SpringApplication.run(MyFirstMicroserviceApplication.class, args);
 	}
+
+
+
 
 }

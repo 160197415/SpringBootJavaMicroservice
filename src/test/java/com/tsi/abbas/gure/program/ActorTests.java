@@ -25,35 +25,35 @@ public class ActorTests {
     @When("I have the users first name")
     public void i_have_the_users_first_name() {
         firstName = "Abbas";
-        dummyActor.setFirstName(firstName);
+        dummyActor.setFirst_name(firstName);
 
     }
     @When("I have the users last name")
     public void i_have_the_users_last_name() {
         // Write code here that turns the phrase above into concrete actions
         lastName = "Gure";
-        dummyActor.setLastName(lastName);
+        dummyActor.setLast_name(lastName);
 
     }
     @When("The users first name equals {string}")
     public void the_users_first_name_equals(String string) {
         // Write code here that turns the phrase above into concrete actions
-        dummyActor.firstName.equals(string);
+        dummyActor.first_name.equals(string);
 
     }
     @When("The users last name equals {string}")
     public void the_users_last_name_equals(String string) {
         // Write code here that turns the phrase above into concrete actions
 
-       dummyActor.lastName.equals(string);
+       dummyActor.last_name.equals(string);
 
 
     }
     @Then("The system return {string}")
     public void the_system_return(String string) {
         // Write code here that turns the phrase above into concrete actions
-        Assertions.assertEquals(firstName,dummyActor.getFirstName(),"Incorrect First Name");
-        Assertions.assertEquals(lastName,dummyActor.getLastName(),"Incorrect Last Name");
+        Assertions.assertEquals(firstName,dummyActor.getFirst_name(),"Incorrect First Name");
+        Assertions.assertEquals(lastName,dummyActor.getLast_name(),"Incorrect Last Name");
 
 
     }

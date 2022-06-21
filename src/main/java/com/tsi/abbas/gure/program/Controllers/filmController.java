@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 ;import org.springframework.web.bind.annotation.*;
 
 @RestController
-public class FilmController {
+public class filmController {
 
     //Film repository instantiated
     @Autowired
@@ -23,19 +23,19 @@ public class FilmController {
 
     /**
      *
-     * @param filmID is the ID of the film that is used as parameter for searching for Film's existence in table
+     * @param film_id is the ID of the film that is used as parameter for searching for Film's existence in table
      * @return true if the film exists else return false, a simple boolean class for existence of films's ID
      */
     @GetMapping("/Films/IdExist")
-    public @ResponseBody Boolean idExists(@RequestParam int filmID){
-        if (filmRepository.existsById(filmID)){
+    public @ResponseBody Boolean idExists(@RequestParam int film_id){
+        if (filmRepository.existsById(film_id)){
             return true ;
         }else return false ;
     }
 
 
     /**Out of the CRUD functions this is the 'Delete' */
-    @DeleteMapping("/Delete_By_ID")
+    @DeleteMapping("/Delete_By_Film_ID")
     public @ResponseBody
     String deleteById(@RequestParam int filmID){
 
@@ -45,30 +45,28 @@ public class FilmController {
 
 
     /**Out of the CRUD functions this is the 'Update' Method */
-    @PutMapping("/Replace_By_ID")
-    public @ResponseBody String updateFilm(@RequestParam int filmID ,@RequestParam String filmTitle,
-        @RequestParam int storedRentedFromID, @RequestParam int filmLength, @RequestParam int filmRating, @RequestParam int filmActorID,
-                                           @RequestParam String actorName)
+    @PutMapping("/Replace_By_Film_ID")
+    public @ResponseBody String updateFilm(@RequestParam int film_id ,@RequestParam String filmTitle, @RequestParam int filmLength, @RequestParam String description, @RequestParam int language_id, @RequestParam int original_language_id)
     {
         //A string we will use later as a message that values were successfully updated, you'll see it below
         String valueWasUpdated = "Values were updated";
 
 
         //using crud repository method that we got from extended class, look for id of Film exists in the database
-        if(filmRepository.existsById(filmID)){
+        if(filmRepository.existsById(film_id)){
             // if it does find the specific ID in the database using the ID of the film and put it in a temp film value
             Film film = new Film();
 
             //Find Film ID
-            film = filmRepository.findById(filmID).get();
+            film = filmRepository.findById(film_id).get();
 
             //Once finding film user inputs relevant values to film variables
-            film.setFilmTitle(filmTitle);
-            film.setStoredRentedFromID(storedRentedFromID);
-            film.setFilmRating(filmRating);
-            film.setFilmLength(filmLength);
-            film.setFilmActorID(filmActorID);
-            film.setActorName(actorName);
+            film.setTitle(filmTitle);
+            film.setDescription(description);
+            film.setLength(filmLength);
+            film.setOriginal_language_id(original_language_id);
+            film.setLanguage_id(language_id);
+
 
             //Repository save/updates the store detail changes.
             filmRepository.save(film);
@@ -84,10 +82,8 @@ public class FilmController {
     }
 
     /**Out of the CRUD functions this is the 'Create' */
-    @PostMapping("/Create_By_ID")
-    public  @ResponseBody Film newFilm( @RequestParam String filmTitle,
-            @RequestParam int storedRentedFromID, @RequestParam int filmLength, @RequestParam int filmRating,
-            @RequestParam int filmActorID, @RequestParam String actorName)
+    @PostMapping("/Create_By_Film_ID")
+    public  @ResponseBody Film newFilm( @RequestParam String title, @RequestParam int length, @RequestParam String description, @RequestParam int language_id, @RequestParam int original_language_id)
     {
         //Actor instance that we will use for our new store
         Film film = new Film();
@@ -98,12 +94,12 @@ public class FilmController {
 
         //Setting the new films fields
         //Then returning the value to user along with the ID they were assigned by the table
-        film.setFilmTitle(filmTitle);
-        film.setStoredRentedFromID(storedRentedFromID);
-        film.setFilmRating(filmRating);
-        film.setFilmLength(filmLength);
-        film.setFilmActorID(filmActorID);
-        film.setActorName(actorName);
+        film.setTitle(title);
+        film.setDescription(description);
+        film.setLanguage_id(language_id);
+        film.setOriginal_language_id(original_language_id);
+        film.setLength(length);
+
         return filmRepository.save(film);
     }
 

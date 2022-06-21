@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 ;import org.springframework.web.bind.annotation.*;
 
 @RestController
-public class StoreController {
+public class storeController {
 
 
     //Store repository instantiated
@@ -26,46 +26,46 @@ public class StoreController {
 
     /**
      *
-     * @param storeId is the ID of the store that is used as parameter for searching for store's existence in table
+     * @param store_id is the ID of the store that is used as parameter for searching for store's existence in table
      * @return true if the store exists else return false, a simple boolean class for existence of store's ID
      */
     @GetMapping("/Stores/IdExist")
-    public @ResponseBody Boolean idExists(@RequestParam int storeId){
-        if (storeRepository.existsById(storeId)){
+    public @ResponseBody Boolean idExists(@RequestParam int store_id){
+        if (storeRepository.existsById(store_id)){
             return true ;
         }else return false ;
     }
 
 
     /**Out of the CRUD functions this is the 'Delete' */
-    @DeleteMapping("/Delete_By_ID")
+    @DeleteMapping("/Delete_By_Store_ID")
     public @ResponseBody
-    String deleteById(@RequestParam int storeId){
+    String deleteById(@RequestParam int store_id){
 
-        storeRepository.deleteById(storeId);
+        storeRepository.deleteById(store_id);
         return "Successfully deleted";
     }
 
 
     /**Out of the CRUD functions this is the 'Update' Method */
-    @PutMapping("/Replace_By_ID")
-    public @ResponseBody String updateStore(@RequestParam int storeId ,@RequestParam int storeAddressID,@RequestParam int staffSize)
+    @PutMapping("/Replace_By_Store_ID")
+    public @ResponseBody String updateStore(@RequestParam int store_id ,@RequestParam int address_id,@RequestParam int manager_staff_id)
     {
         //A string we will use later as a message that values were successfully updated, you'll see it below
         String valueWasUpdated = "Values were updated";
 
 
         //using crud respository method that we got from extended class, check if id of store exists in the database
-        if(storeRepository.existsById(storeId) && storeRepository.findById(storeAddressID).isPresent()){
+        if(storeRepository.existsById(store_id) && storeRepository.findById(address_id).isPresent()){
             // if it does find the specific ID in the database using the ID of the store and put it in a temp store value
             Store store = new Store();
 
             //Find Store ID
-            store = storeRepository.findById(storeId).get();
+            store = storeRepository.findById(store_id).get();
 
-            //Once finding store user inputs relevant values to storeAddressID and  staffSize variables
-            store.setStoreAddressID(storeAddressID);
-            store.setStaffSize(staffSize);
+            //Once finding store user inputs relevant values to address_id and  manager_staff_id variables
+            store.setAddress_id(address_id);
+            store.setManager_staff_id(manager_staff_id);
 
             //Repository save/updates the store detail changes.
             storeRepository.save(store);
@@ -81,20 +81,21 @@ public class StoreController {
     }
 
     /**Out of the CRUD functions this is the 'Create' */
-    @PostMapping("/Create_By_ID")
-    public  @ResponseBody Store newStore(  @RequestParam int storeID,@RequestParam int storeAddressID, @RequestParam int staffSize)
+    @PostMapping("/Create_By_Store_ID")
+        public  @ResponseBody Store newStore(  @RequestParam int store_id,@RequestParam int address_id, @RequestParam int manager_staff_id)
     {
         //Store instance that we will use for our new store
         Store newStore = new Store();
 
-        /** I didnt add id variable to be created/updated because it is autoincrementally added by the database,
+        /** I didn't add id variable to be created/updated because it is auto incrementally added by the database,
          * if I do add id it would not create/update with the save method */
 
 
         //Setting Stores values
         //Then returning the value to user along with the ID they were assigned by the table
-        newStore.setStoreAddressID(storeAddressID);
-        newStore.setStaffSize(staffSize);
+        newStore.setStore_id(store_id);
+        newStore.setAddress_id(address_id);
+        newStore.setManager_staff_id(manager_staff_id);
         return storeRepository.save(newStore);
     }
 

@@ -1,5 +1,7 @@
 package com.tsi.abbas.gure.program.StorePackage;
 
+import org.springframework.data.annotation.Id;
+
 import javax.persistence.*;
 
 @Entity
@@ -12,47 +14,48 @@ public class Store {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int storeID;
+    private int store_id;
 
-    public Store(int storeID, int storeAddressID, int staffSize) {
-        this.storeID = storeID;
-        this.storeAddressID = storeAddressID;
-        this.staffSize = staffSize;
+    public Store(int storeID, int address_id, int manager_staff_id) {
+        this.store_id = storeID;
+        this.address_id = address_id;
+        this.manager_staff_id = manager_staff_id;
     }
-public Store(){
 
-}
-    private int storeAddressID;
+    private int address_id;
 
-    private int staffSize;
+    private int manager_staff_id;
 
+    public Store(){
+
+    }
     /**
      * Setters and getters generated
      */
 
 
-    public int getStoreID() {
-        return storeID;
+    public int getStore_id() {
+        return store_id;
     }
 
-    public void setStoreID(int storeID) {
-        this.storeID = storeID;
+    public void setStore_id(int store_id) {
+        this.store_id = store_id;
     }
 
-    public int getStoreAddressID() {
-        return storeAddressID;
+    public int getAddress_id() {
+        return address_id;
     }
 
-    public void setStoreAddressID(int storeAddressID) {
-        this.storeAddressID = storeAddressID;
+    public void setAddress_id(int address_id) {
+        this.address_id = address_id;
     }
 
-    public int getStaffSize() {
-        return staffSize;
+    public int getManager_staff_id() {
+        return manager_staff_id;
     }
 
-    public void setStaffSize(int staffSize) {
-        this.staffSize = staffSize;
+    public void setManager_staff_id(int manager_staff_id) {
+        this.manager_staff_id = manager_staff_id;
     }
 
 }
