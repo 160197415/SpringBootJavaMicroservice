@@ -30,6 +30,14 @@ public class Customer {
 
     private String email;
 
+    public int getAddress_id() {
+        return address_id;
+    }
+
+    public void setAddress_id(int address_id) {
+        this.address_id = address_id;
+    }
+
     private int address_id;
 
 

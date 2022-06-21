@@ -50,7 +50,7 @@ public class customerController {
     /**Out of the CRUD functions this is the 'Update' Method */
     @PutMapping("/Replace_By_Customer_ID")
     public @ResponseBody String updateCustomerDetails(@RequestParam int customer_id ,@RequestParam int store_id, @RequestParam String first_name,
-         @RequestParam String last_name,@RequestParam String email)
+         @RequestParam String last_name,@RequestParam String email, @RequestParam int address_id)
     {
         //A string we will use later as a message that values were successfully updated, you'll see it below
         String valueWasUpdated = "Values were updated";
@@ -68,6 +68,7 @@ public class customerController {
             customer.setStore_id(store_id);
             customer.setFirst_name(first_name);
             customer.setLast_name(last_name);
+            customer.setAddress_id(address_id);
             customer.setEmail(email);
 
 
@@ -86,8 +87,8 @@ public class customerController {
 
     /**Out of the CRUD functions this is the 'Create' */
     @PostMapping("/Create_By_Customer_ID")
-    public  @ResponseBody Customer newCustomer(@RequestParam int customer_id ,@RequestParam int store_id, @RequestParam String first_name,
-                                               @RequestParam String last_name,@RequestParam String email)
+    public  @ResponseBody Customer newCustomer(@RequestParam int store_id, @RequestParam String first_name,
+                                               @RequestParam String last_name,@RequestParam String email, @RequestParam int address_id)
     {
         // instance that we will use for our new customer
         Customer customer = new Customer();
@@ -102,6 +103,7 @@ public class customerController {
         customer.setFirst_name(first_name);
         customer.setLast_name(last_name);
         customer.setEmail(email);
+        customer.setAddress_id(address_id);
         return customerRepository.save(customer);
     }
 
