@@ -1,5 +1,6 @@
 package com.tsi.abbas.gure.program.Controllers;
 
+import com.tsi.abbas.gure.program.CustomerPackage.CustomerRepository;
 import com.tsi.abbas.gure.program.StorePackage.Store;
 import com.tsi.abbas.gure.program.StorePackage.StoreRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,7 +14,7 @@ public class storeController {
     @Autowired
     private StoreRepository storeRepository;
 
-
+    public storeController(StoreRepository storeRepository){this.storeRepository=storeRepository ;}
 
 
     /**This is for getting all the contents of the stores from the store table in the sakila database
@@ -56,7 +57,7 @@ public class storeController {
 
 
         //using crud respository method that we got from extended class, check if id of store exists in the database
-        if(storeRepository.existsById(store_id) && storeRepository.findById(address_id).isPresent()){
+        if(storeRepository.existsById(store_id)){
             // if it does find the specific ID in the database using the ID of the store and put it in a temp store value
             Store store = new Store();
 

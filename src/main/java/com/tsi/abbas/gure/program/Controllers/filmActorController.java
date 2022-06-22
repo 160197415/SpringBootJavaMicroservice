@@ -36,8 +36,6 @@ public class filmActorController {
 
     }
 
-
-
     /**Out of the CRUD functions this is the 'Delete' */
     @DeleteMapping("/Delete_By_FilmActor_ID")
     public @ResponseBody
@@ -47,7 +45,7 @@ public class filmActorController {
         return "Successfully deleted";
     }
 
-    /** Commented out the following as the filmactor database is a 3NF and thus shouldnt be edited externally*/
+    /** Commented out the following as the film-actor database is a 3NF and thus shouldn't be edited externally*/
 //    /**Out of the CRUD functions this is the 'Update' Method */
 //    @PutMapping("/Replace_By_FilmActor_ID")
 //    public @ResponseBody String updateFilmActor(@RequestParam int actor_id ,@RequestParam int film_id)

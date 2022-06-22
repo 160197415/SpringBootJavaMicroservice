@@ -16,8 +16,8 @@ public class Store {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int store_id;
 
-    public Store(int storeID, int address_id, int manager_staff_id) {
-        this.store_id = storeID;
+    public Store(int store_id, int address_id, int manager_staff_id) {
+        this.store_id = store_id;
         this.address_id = address_id;
         this.manager_staff_id = manager_staff_id;
     }
