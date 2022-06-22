@@ -1,5 +1,6 @@
 package com.tsi.abbas.gure.program.Controllers;
 
+import com.tsi.abbas.gure.program.ActorPackage.ActorRepository;
 import com.tsi.abbas.gure.program.FilmActorPackage.FilmActorRepository;
 import com.tsi.abbas.gure.program.FilmActorPackage.FilmActor;
 
@@ -14,6 +15,7 @@ public class filmActorController {
     @Autowired
     private FilmActorRepository filmActorRepository;
 
+    public filmActorController(FilmActorRepository filmActorRepository){this.filmActorRepository=filmActorRepository ;}
 
 
     /**This is for getting all the film actors from the film actor table in the sakila database
