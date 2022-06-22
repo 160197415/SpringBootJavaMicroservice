@@ -8,7 +8,7 @@ import org.junit.jupiter.api.Assertions;
 
 public class ActorCucumberTests {
 
-    /**Created a dummy actor to populate values and to then test the assertvalues on,
+    /**Created a dummy actor to populate values and to then test the assert values on,
      * This is to confirm my inbuilt methods in real application work */
     Actor dummyActor = new Actor("","");
 
