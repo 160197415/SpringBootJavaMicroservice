@@ -12,6 +12,8 @@ public class ActorController {
     @Autowired
     private ActorRepository actorRepository;
 
+    public ActorController(ActorRepository actorRepository){this.actorRepository=actorRepository ;}
+
 
     /**This is for getting all the contents of the actors from the actor table in the sakila database
      * More specifically in terms of CRUD functions this is the 'Read'*/
@@ -30,7 +32,7 @@ public class ActorController {
     @GetMapping("/actors/IdExist")
     public @ResponseBody Boolean idExists(@RequestParam int actor_id){
 
-            return actorRepository.existsById(actor_id);
+        return actorRepository.existsById(actor_id);
     }
 
 
@@ -69,7 +71,7 @@ public class ActorController {
 
         } else {
             //If we do not find actor in the repository or if they arent present
-            valueWasUpdated = "ID not found";
+            valueWasUpdated = "Id not found";
         }
         //Basically by this point we updated the value if correctly found
         return valueWasUpdated;
