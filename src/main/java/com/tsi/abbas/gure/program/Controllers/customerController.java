@@ -1,5 +1,6 @@
 package com.tsi.abbas.gure.program.Controllers;
 
+import com.tsi.abbas.gure.program.ActorPackage.ActorRepository;
 import com.tsi.abbas.gure.program.CustomerPackage.Customer;
 import com.tsi.abbas.gure.program.CustomerPackage.CustomerRepository;
 
@@ -12,6 +13,8 @@ public class customerController {
     //Customer repository instantiated
     @Autowired
     private CustomerRepository customerRepository;
+
+    public customerController(CustomerRepository customerRepository){this.customerRepository=customerRepository ;}
 
 
     /**This is for getting all the customers from the customer table in the sakila database
