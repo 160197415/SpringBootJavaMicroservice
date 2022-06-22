@@ -26,9 +26,13 @@ public class FilmActor {
         this.actor_id = actor_id;
         this.film_id = film_id;
     }
-    public FilmActor(){
 
-    }
+    /**
+     * Commenting out the FilmActor Bag
+     */
+//    public FilmActor(){
+//
+//    }
 
     /**
      * Generating setters and getters
