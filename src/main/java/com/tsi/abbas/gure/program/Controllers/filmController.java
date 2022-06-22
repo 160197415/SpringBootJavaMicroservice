@@ -2,6 +2,7 @@ package com.tsi.abbas.gure.program.Controllers;
 
 import com.tsi.abbas.gure.program.FilmPackage.Film;
 import com.tsi.abbas.gure.program.FilmPackage.FilmRepository;
+import com.tsi.abbas.gure.program.StorePackage.StoreRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 ;import org.springframework.web.bind.annotation.*;
 
@@ -11,6 +12,8 @@ public class filmController {
     //Film repository instantiated
     @Autowired
     private FilmRepository filmRepository;
+
+    public filmController(FilmRepository filmRepository){this.filmRepository=filmRepository ;}
 
 
     /**This is for getting all the contents of the Films from the film table in the sakila database

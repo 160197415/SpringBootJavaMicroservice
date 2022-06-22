@@ -1,9 +1,6 @@
 package com.tsi.abbas.gure.program;
 
-import com.tsi.abbas.gure.program.Controllers.customerController;
 import com.tsi.abbas.gure.program.Controllers.storeController;
-import com.tsi.abbas.gure.program.CustomerPackage.Customer;
-import com.tsi.abbas.gure.program.CustomerPackage.CustomerRepository;
 import com.tsi.abbas.gure.program.StorePackage.Store;
 import com.tsi.abbas.gure.program.StorePackage.StoreRepository;
 import org.junit.jupiter.api.Assertions;
@@ -14,11 +11,9 @@ import org.mockito.ArgumentCaptor;
 import org.mockito.InjectMocks;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.boot.test.mock.mockito.MockBean;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
-
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.*;
 import static org.mockito.Mockito.when;

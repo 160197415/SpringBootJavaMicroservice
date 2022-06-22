@@ -1,5 +1,6 @@
 package com.tsi.abbas.gure.program.Controllers;
 
+import com.tsi.abbas.gure.program.ActorPackage.ActorRepository;
 import com.tsi.abbas.gure.program.CountryPackage.Country;
 import com.tsi.abbas.gure.program.CountryPackage.CountryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +11,8 @@ public class countryController {
     //Country repository instantiated
     @Autowired
     private CountryRepository countryRepository;
+
+    public countryController(CountryRepository countryRepository){this.countryRepository=countryRepository ;}
 
 
     /**This is for getting all the contents of the Country from the country table in the Sakila database
