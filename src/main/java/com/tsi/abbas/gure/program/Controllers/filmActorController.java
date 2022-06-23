@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
+@CrossOrigin(origins = "*")
 public class filmActorController {
 
 
@@ -47,9 +48,9 @@ public class filmActorController {
         return "Successfully deleted";
     }
 
-    /** Commented out the following as the film-actor database is a 3NF and thus shouldn't be edited externally*/
-//    /**Out of the CRUD functions this is the 'Update' Method */
-//    @PutMapping("/Replace_By_FilmActor_ID")
+    /* Commented out the following as the film-actor database is a 3NF and thus shouldn't be edited externally
+    Out of the CRUD functions this is the 'Update' Method
+/*   @PutMapping("/Replace_By_FilmActor_ID")
 //    public @ResponseBody String updateFilmActor(@RequestParam int actor_id ,@RequestParam int film_id)
 //    {
 //        //A string we will use later as a message that values were successfully updated, you'll see it below

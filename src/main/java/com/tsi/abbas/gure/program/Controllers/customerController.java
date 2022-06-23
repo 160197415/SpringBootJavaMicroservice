@@ -1,6 +1,5 @@
 package com.tsi.abbas.gure.program.Controllers;
 
-import com.tsi.abbas.gure.program.ActorPackage.ActorRepository;
 import com.tsi.abbas.gure.program.CustomerPackage.Customer;
 import com.tsi.abbas.gure.program.CustomerPackage.CustomerRepository;
 
@@ -8,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
+@CrossOrigin(origins = "*")
 public class customerController {
 
     //Customer repository instantiated
@@ -24,6 +24,8 @@ public class customerController {
     Iterable<Customer> getAllCustomers(){
         return customerRepository.findAll();
     }
+
+
 
 
     /**

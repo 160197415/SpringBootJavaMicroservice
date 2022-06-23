@@ -5,7 +5,10 @@ import com.tsi.abbas.gure.program.ActorPackage.ActorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Optional;
+
 @RestController
+@CrossOrigin(origins = "*")
 public class ActorController {
 
     //Actor repository instantiated
@@ -43,6 +46,14 @@ public class ActorController {
 
         actorRepository.deleteById(actor_id);
         return "Successfully deleted";
+    }
+
+    /**Out of the CRUD functions this is the 'Get' */
+    @GetMapping("/Get_By_ID")
+    public @ResponseBody
+    Optional<Actor> getById(@RequestParam int actor_id){
+
+        return actorRepository.findById(actor_id);
     }
 
 

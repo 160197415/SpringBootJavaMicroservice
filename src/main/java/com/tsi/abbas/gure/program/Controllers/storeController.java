@@ -1,12 +1,12 @@
 package com.tsi.abbas.gure.program.Controllers;
 
-import com.tsi.abbas.gure.program.CustomerPackage.CustomerRepository;
 import com.tsi.abbas.gure.program.StorePackage.Store;
 import com.tsi.abbas.gure.program.StorePackage.StoreRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 ;import org.springframework.web.bind.annotation.*;
 
 @RestController
+@CrossOrigin(origins = "*")
 public class storeController {
 
 
