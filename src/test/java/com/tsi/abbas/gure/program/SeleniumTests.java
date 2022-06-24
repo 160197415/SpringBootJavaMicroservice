@@ -7,6 +7,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 
@@ -75,4 +77,101 @@ public class SeleniumTests {
 
     }
 
+    @Test
+    public void testAllActor() {
+        //Get this url
+        webDriver.get("http://localhost:3000/All_Actors");
+
+        String expected = webDriver.findElement(By.id("actorNameList")).getText();
+        //Find the element in the screen and click on it
+        webDriver.findElement(By.id("displayButton")).click();
+        webDriver.findElement(By.id("actorNameList")).isDisplayed();
+
+        // waite until keyword display is not equal to expected or 30 secs has passed
+        WebDriverWait wait = new WebDriverWait(webDriver, Duration.ofSeconds(30));
+        wait.until(ExpectedConditions.invisibilityOfElementWithText(By.id("actorNameList"), expected));
+
+        String actual = webDriver.findElement(By.id("actorNameList")).getText();
+        Assertions.assertNotEquals(expected, actual);
+
+    }
+
+
+
+
+//    @Test
+//    public void testAllCountries() {
+//        //Get this url
+//        webDriver.get("http://localhost:3000/All_Countries");
+//
+//        String expected = webDriver.findElement(By.id("countryNameList")).getText();
+//        //Find the element in the screen and click on it
+//        webDriver.findElement(By.id("displayButton")).click();
+//        webDriver.findElement(By.id("countryNameList")).isDisplayed();
+//
+//        // waite until keyword display is not equal to expected or 30 secs has pass
+//        WebDriverWait wait = new WebDriverWait(webDriver, Duration.ofSeconds(30));
+//        wait.until(ExpectedConditions.invisibilityOfElementWithText(By.id("countryNameList"), expected));
+//
+//        String actual = webDriver.findElement(By.id("countryNameList")).getText();
+//        Assertions.assertNotEquals(expected, actual);
+//
+//    } @Test
+//    public void testAllCustomers() {
+//        //Get this url
+//        webDriver.get("http://localhost:3000/All_Customers");
+//
+//        String expected = webDriver.findElement(By.id("customerNameList")).getText();
+//        //Find the element in the screen and click on it
+//        webDriver.findElement(By.id("displayButton")).click();
+//        webDriver.findElement(By.id("customerNameList")).isDisplayed();
+//
+//        // waite until keyword display is not equal to expected or 30 secs has pass
+//        WebDriverWait wait = new WebDriverWait(webDriver, Duration.ofSeconds(30));
+//        wait.until(ExpectedConditions.invisibilityOfElementWithText(By.id("customerNameList"), expected));
+//
+//        String actual = webDriver.findElement(By.id("customerNameList")).getText();
+//        Assertions.assertNotEquals(expected, actual);
+//
+//    }
+
+//
+//    @Test
+//    public void testAllFilmActors() {
+//        //Get this url
+//        webDriver.get("http://localhost:3000/All_Actors");
+//
+//        String expected = webDriver.findElement(By.id("filmActorList")).getText();
+//        //Find the element in the screen and click on it
+//        webDriver.findElement(By.id("displayButton")).click();
+//        webDriver.findElement(By.id("filmActorList")).isDisplayed();
+//
+//        // waite until keyword display is not equal to expected or 30 secs has pass
+//        WebDriverWait wait = new WebDriverWait(webDriver, Duration.ofSeconds(30));
+//        wait.until(ExpectedConditions.invisibilityOfElementWithText(By.id("filmActorList"), expected));
+//
+//        String actual = webDriver.findElement(By.id("filmActorList")).getText();
+//        Assertions.assertNotEquals(expected, actual);
+//
+//    }
+//
+//
+//    @Test
+//    public void testAllStores() {
+//        //Get this url
+//        webDriver.get("http://localhost:3000/All_Stores");
+//
+//        String expected = webDriver.findElement(By.id("storeList")).getText();
+//        //Find the element in the screen and click on it
+//        webDriver.findElement(By.id("displayButton")).click();
+//        webDriver.findElement(By.id("storeList")).isDisplayed();
+//
+//        // waite until keyword display is not equal to expected or 30 secs has pass
+//        WebDriverWait wait = new WebDriverWait(webDriver, Duration.ofSeconds(30));
+//        wait.until(ExpectedConditions.invisibilityOfElementWithText(By.id("storeList"), expected));
+//
+//        String actual = webDriver.findElement(By.id("storeList")).getText();
+//        Assertions.assertNotEquals(expected, actual);
+//
+//    }
 }
